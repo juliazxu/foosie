@@ -9,9 +9,11 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "ejs": "*",
+    "body-parser": "^1.5.2",
     "express": "^4.10.4",
     "morgan": "~1.0.0",
-    "request": "^2.47.0"
+    "request": "^2.47.0",
+    "socket.io": "~1.2.1",
+    "serialport": "~1.4.6"
   }
 }
