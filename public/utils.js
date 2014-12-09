@@ -1,14 +1,14 @@
 var realcount;
 
 function updateCount(){
-	$.get( "http://foosie.herokuapp.com/count", function(data){
+	$.get( "https://foosie.herokuapp.com/count", function(data){
 	  console.log(data["doc_count"]);
 	  realcount = data["doc_count"];
 	  $( "#counter" ).html(realcount);
 	});
 }
 
-var socket = io('http://foosie.herokuapp.com');
+var socket = io('https://foosie.herokuapp.com');
   socket.on('news', function (data) {
     console.log(data);
     console.log(typeof data);

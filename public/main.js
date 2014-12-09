@@ -1,6 +1,6 @@
 // document.addEventListener('DOMContentLoaded', start, false);
 
-    var foo = new Sound("http://picosong.com/4x8b",20,true);
+    var foo = new Sound("https://picosong.com/4x8b",20,true);
     foo.start();
 
 function Sound(source,volume,loop)
