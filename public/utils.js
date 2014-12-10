@@ -54,7 +54,6 @@ $('#heart1').click(
 	// };
 
 // }
-  });
 
 $(function() {
     // setTimeout() function will be fired after page is loaded
