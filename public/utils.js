@@ -25,7 +25,7 @@ var clickSocket = io('https://foosie.herokuapp.com/click');
   	console.log('click client has connected')
   });
 
-$('#heart1').click(
+$('#heart').click(
 	clickSocket.emit('clicked', '1')
 );
 
