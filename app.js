@@ -13,7 +13,7 @@ var io = require('socket.io')(server);
 var saved = false;
 var port = process.env.PORT || 3000; 
 
-
+var stress = 0;
 
 //Some Middleware - log requests to the terminal console
 app.use(logger('dev'));
