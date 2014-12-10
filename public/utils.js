@@ -8,8 +8,8 @@ var stress;
 // 	  $( "#counter" ).html(realcount);
 // 	});
 // }
-
-var stressSocket = io('https://foosie.herokuapp.com/stress');
+var stressSocket = io('http://foosie.herokuapp.com/stress');
+// var stressSocket = io('https://foosie.herokuapp.com/stress');
   stressSocket.on('connect', function(socket){
   	console.log('client has connected')
   });
@@ -20,14 +20,15 @@ var stressSocket = io('https://foosie.herokuapp.com/stress');
   	//update stress in heart
   });
 
-var clickSocket = io('https://foosie.herokuapp.com/click');
+var clickSocket = io('http://foosie.herokuapp.com/click');
 	clickSocket.on('connect', function(socket){
-  	console.log('click client has connected')
+  	console.log('click client has connected');
   });
 
-$('#heart').click(
-	clickSocket.emit('clicked', '1')
-);
+$('#heart').click(function(){
+		console.log("clicked");
+		clickSocket.emit('clicked', '1');
+		});
 
 
  //  socket.on('news', function (data) {

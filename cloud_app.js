@@ -2,8 +2,6 @@
 var logger = require('morgan');
 var Request = require('request');
 var bodyParser = require('body-parser');
-var serialport = require('serialport');
-var SerialPort = serialport.SerialPort;
 var http = require('http');
 var express = require("express");
 	app = module.exports.app = express();
@@ -30,26 +28,30 @@ app.use(express.static(__dirname + '/public'));
 ROUTES
 -----*/
 
-while (stress < 1000) {
-	stress++;
-}
-
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
-server.listen(port);
-console.log('Express started on port 3000');
-
-var stressSocket = io.of("https://foosie.herokuapp.com/stress")
+var stressSocket = io.of("/stress");
+// var stressSocket = io.of("https://foosie.herokuapp.com/stress")
 stressSocket.on('connection', function (socket) {
 	console.log('Connection established with client.');
-	io.emit('stress', stress);
+	socket.emit('stress', stress);
 });
 
-var clickSocket = io.of("https://foosie.herokuapp.com/click")
-clickSocket.on('clicked', function(numclicks){
-	stress--;
-})
+var clickSocket = io.of("/click");
+clickSocket.on('connection', function(socket){
+	console.log("click connection online");
+	socket.on('clicked', function(data){
+		console.log("CLICKED!");
+		console.log(data);
+		stress--;
+		stressSocket.emit('stress', stress);
+	});
+});
+
+server.listen(port);
+console.log('Express started on port 3000');
+setInterval(function(){ console.log(stress++);stressSocket.emit('stress', stress); }, 1000);
