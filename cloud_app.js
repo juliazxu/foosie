@@ -54,8 +54,10 @@ clickSocket.on('connection', function(socket){
 
 server.listen(port);
 console.log('Express started on port 3000');
-setInterval(function(){ console.log(stress++);stressSocket.emit('stress', stress); }, 1000);
-
-if (stress > 1005 || stress < 0){
-	stress = 0;
-};
+setInterval(function(){
+	if (stress > 1005 || stress < 0)
+		stress == 0
+	else
+		console.log(stress++);
+	stressSocket.emit('stress', stress); 
+}, 1000);
