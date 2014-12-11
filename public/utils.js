@@ -1,5 +1,8 @@
 // var realcount;
 var stress;
+var w = window.innerWidth;
+var h = window.innerHeight;
+var time1 = Date.now();
 
 // function updateCount(){
 // 	$.get( "https://foosie.herokuapp.com/count", function(data){
@@ -33,6 +36,22 @@ $('#heart').click(function(){
 if(stress = 1000){
 	('#heart').html(brokenheart.gif);
 }
+
+$('#areaChartData').epoch({
+  type: 'time.line',
+  data: stress,
+  pixelRatio: 1
+})
+
+var areaChartData = [
+  // The first layer
+  {
+    label: "Stress level",
+    values: [ {time: time1, y: stress} ]
+  },
+];
+
+areaChartData.push(nextDataPoint);
 
  //  socket.on('news', function (data) {
  //    console.log(data);
