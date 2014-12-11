@@ -5,7 +5,8 @@ var SerialPort = serialport.SerialPort;
 var app = require('http').createServer(handler);
 var io = require('socket.io-client');
 
-var herokuApp = io.connect("http://localhost:3000/destress");
+var herokuApp = io.connect("http://foosie.herokuApp.com/destress");
+//var herokuApp = io.connect("http://localhost:3000/destress");
 herokuApp.on("connect", function(socket){
 	console.log("connected to Heroku!!! YAY!!");
 });

@@ -26,6 +26,7 @@ var stressSocket = io('https://foosie.herokuapp.com/stress');
   });
   
   stressSocket.on('stress', function(data){
+  	console.log("Here");
   	console.log(data);
   	stress = data;
   	$( "#stress" ).html(data);
