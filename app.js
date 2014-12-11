@@ -5,7 +5,7 @@ var SerialPort = serialport.SerialPort;
 var app = require('http').createServer(handler);
 var io = require('socket.io-client');
 
-var herokuApp = io.connect("http://foosie.herokuapp.com/destress");
+var herokuApp = io.connect("http://localhost:3000/destress");
 herokuApp.on("connect", function(socket){
 	console.log("connected to Heroku!!! YAY!!");
 });
@@ -45,6 +45,7 @@ myPort.on('data', function(data){
    	if (data > 3.0){
    		console.log("FUZZIE!");
    		herokuApp.emit("destressed", "1");
+   		// $( "#heart" ).setActive();
    	}
 });
 app.listen(3000);

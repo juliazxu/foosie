@@ -34,8 +34,8 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
-var stressSocket = io.of("/stress");
-// var stressSocket = io.of("https://foosie.herokuapp.com/stress")
+// var stressSocket = io.of("/stress");
+var stressSocket = io.of("https://foosie.herokuapp.com/stress")
 stressSocket.on('connection', function (socket) {
 	console.log('Connection established with client.');
 	socket.emit('stress', stress);

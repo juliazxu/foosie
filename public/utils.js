@@ -11,18 +11,14 @@ function jtsConverter(uxdate){
 var areaChartData = [
   // The first layer
   {
-    label: "Stress level",
+    label: "Stress",
     values: []
   },
 ];
 
-// function updateCount(){
-// 	$.get( "https://foosie.herokuapp.com/count", function(data){
-// 	  console.log(data["doc_count"]);
-// 	  realcount = data["doc_count"];
-// 	  $( "#counter" ).html(realcount);
-// 	});
-// }
+
+var prevValue = 0;
+
 // var stressSocket = io('http://localhost:3000/stress');
 var stressSocket = io('https://foosie.herokuapp.com/stress');
   stressSocket.on('connect', function(socket){
@@ -31,9 +27,26 @@ var stressSocket = io('https://foosie.herokuapp.com/stress');
   
   stressSocket.on('stress', function(data){
   	console.log(data);
-  	$( "#stress" ).html(data);
   	stress = data;
+  	$( "#stress" ).html(data);
+  	if (data > prevValue){
+  		//increasing
+	  	//$('#heart').html("heart2.gif");
+	  $( "#heart" ).trigger('click');	
+  	}
+  	else{
+  		//decreasing
+	  	//$('#heart').html("heart2.gif");
+  	}
+  	prevValue = data;
+  	if(stress >= 1000){
+		$('#heart').html("brokenheart.gif");
+	}
+
+  	// 
+
   	//update stress in heart
+  	//make click animation
   });
 var clickSocket = io('http://foosie.herokuapp.com/destress');
 // var clickSocket = io('http://localhost:3000/destress');
@@ -47,9 +60,7 @@ $('#heart').click(function(){
 
 		});
 
-if(stress == 1000){
-	$('#heart').html("brokenheart.gif");
-}
+
 
 // valuesarray = [];
 
@@ -71,30 +82,7 @@ setInterval(function(){
 		}]);
 	console.log("Pushed data!");
 }, 1000);
- //  socket.on('news', function (data) {
- //    console.log(data);
- //    console.log(typeof data);
 
- //    var pressure = parseFloat(data);
- //    console.log(pressure);
- // //    if (pressure>3 ) {
-	// //     $("#what").setActive();
-	// // }
-	// // else{
-	// // 	$("#what").addClass("heart");
-	// //     $("#what").removeClass("active");
-	// // };
- //    if (pressure>3 ) {
-	//     $("#what").addClass("active");
-	//     $("#what").removeClass("heart");
-	//     console.log("YO!");
-	//     sendsqueeze();
-	// }else{
-	// 	$("#what").addClass("heart");
-	//     $("#what").removeClass("active");
-	// };
-
-// }
 
 $(function() {
     // setTimeout() function will be fired after page is loaded
