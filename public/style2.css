@@ -70,6 +70,9 @@
     width: 100%;
 }
 
+#stress{
+    pointer-events: none
+}
 /*#counter{
     position: absolute;
     left: 46.3%;
