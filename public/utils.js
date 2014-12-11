@@ -30,6 +30,9 @@ $('#heart').click(function(){
 		clickSocket.emit('clicked', '1');
 		});
 
+if(stress = 1000){
+	('#heart').html(brokenheart.gif);
+}
 
  //  socket.on('news', function (data) {
  //    console.log(data);
