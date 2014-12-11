@@ -41,10 +41,10 @@ stressSocket.on('connection', function (socket) {
 	socket.emit('stress', stress);
 });
 
-var clickSocket = io.of("/click");
+var clickSocket = io.of("/destress");
 clickSocket.on('connection', function(socket){
-	console.log("click connection online");
-	socket.on('clicked', function(data){
+	console.log("destress connection online");
+	socket.on('destressed', function(data){
 		console.log("CLICKED!");
 		console.log(data);
 		stress--;
